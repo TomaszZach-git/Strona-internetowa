@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../config/site.config";
+---
+
+<Base title={`Polityka prywatności | ${site.nazwa}`} description={`Informacje o przetwarzaniu danych osobowych przez ${site.nazwaPrawna}.`}>
+  <article class="container-x max-w-3xl py-16 md:py-24 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-extrabold [&_p]:mt-3 [&_li]:mt-1 [&_ul]:mt-3 [&_ul]:list-disc [&_ul]:pl-6">
+    <h1 class="text-4xl font-extrabold tracking-tight">Polityka prywatności</h1>
+    {site.demo && (
+      <p class="rounded-xl bg-accent-400/15 p-4 text-sm font-semibold">
+        Wzór dla strony demonstracyjnej. Przed użyciem na stronie realnej firmy treść musi zostać dostosowana i zweryfikowana.
+      </p>
+    )}
+
+    <h2>1. Administrator danych</h2>
+    <p>Administratorem danych osobowych jest {site.nazwaPrawna}, {site.adres.ulica}, {site.adres.kod} {site.adres.miasto}, NIP {site.nip}. Kontakt: <a class="underline" href={`mailto:${site.email}`}>{site.email}</a>, tel. {site.telefonWyswietlany}.</p>
+
+    <h2>2. Jakie dane i w jakim celu</h2>
+    <p>Przez formularz kontaktowy zbieramy imię, numer telefonu, miejscowość i treść wiadomości. Przetwarzamy je wyłącznie po to, aby odpowiedzieć na zapytanie i przygotować ofertę (art. 6 ust. 1 lit. b RODO — działania przed zawarciem umowy), a także w prawnie uzasadnionym interesie administratora, jakim jest obsługa korespondencji (art. 6 ust. 1 lit. f RODO).</p>
+
+    <h2>3. Jak długo przechowujemy dane</h2>
+    <p>Do czasu zakończenia korespondencji, a jeśli dojdzie do zawarcia umowy — przez okres wymagany przepisami podatkowymi i okres przedawnienia roszczeń.</p>
+
+    <h2>4. Odbiorcy danych</h2>
+    <p>Dane mogą być przekazywane dostawcom usług technicznych (hosting strony, obsługa formularza, poczta e-mail) wyłącznie w zakresie niezbędnym do działania strony.</p>
+
+    <h2>5. Twoje prawa</h2>
+    <ul>
+      <li>dostęp do danych, ich sprostowanie, usunięcie lub ograniczenie przetwarzania,</li>
+      <li>sprzeciw wobec przetwarzania opartego na uzasadnionym interesie,</li>
+      <li>przenoszenie danych,</li>
+      <li>skarga do Prezesa Urzędu Ochrony Danych Osobowych.</li>
+    </ul>
+
+    <h2>6. Pliki cookies i analityka</h2>
+    <p>Strona nie używa plików cookies wymagających zgody. {site.analityka === "brak" ? "Nie stosujemy narzędzi analitycznych." : "Statystyki odwiedzin zbierane są bez plików cookies i bez identyfikacji użytkowników."}</p>
+  </article>
+</Base>

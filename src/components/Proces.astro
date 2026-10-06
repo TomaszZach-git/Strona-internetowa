@@ -1,0 +1,31 @@
+---
+const kroki = [
+  { t: "Rozmowa telefoniczna", o: "15 minut: metraż, rok budowy, obecne ogrzewanie i rachunki. Od razu mówimy, czy temat ma sens." },
+  { t: "Wizja lokalna", o: "Bezpłatnie oglądamy budynek, kotłownię i miejsce na jednostkę zewnętrzną. Mierzymy, nie zgadujemy." },
+  { t: "Oferta z doborem mocy", o: "Konkretne urządzenie, zakres prac, termin i cena. Bez gwiazdek i dopłat „wyjdzie w trakcie”." },
+  { t: "Montaż i uruchomienie", o: "Zwykle jeden–dwa dni. Na koniec pokazujemy obsługę i zostawiamy dokumentację powykonawczą." },
+  { t: "Opieka po montażu", o: "Przypomnienie o przeglądzie, pomoc w rozliczeniu dotacji, szybki kontakt przy awarii." },
+];
+---
+
+<section id="proces" class="scroll-mt-20 bg-brand-50 py-20 md:py-28">
+  <div class="container-x grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+    <div>
+      <p class="eyebrow">Jak pracujemy</p>
+      <h2 class="h2 mt-2">Od telefonu do ciepłego domu w pięciu krokach</h2>
+      <p class="mt-4 text-muted">
+        Klient wie na każdym etapie, co się dzieje i ile to kosztuje. Tak ograniczamy niespodzianki
+        po obu stronach.
+      </p>
+    </div>
+    <ol class="relative space-y-6 border-l-2 border-brand-100 pl-8">
+      {kroki.map((k, i) => (
+        <li class="relative">
+          <span class="absolute -left-[3.05rem] grid h-10 w-10 place-items-center rounded-full bg-brand-600 font-bold text-white ring-4 ring-brand-50">{i + 1}</span>
+          <h3 class="text-lg font-bold">{k.t}</h3>
+          <p class="mt-1 text-muted">{k.o}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

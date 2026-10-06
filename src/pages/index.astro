@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Uslugi from "../components/Uslugi.astro";
+import Proces from "../components/Proces.astro";
+import Opinie from "../components/Opinie.astro";
+import Faq from "../components/Faq.astro";
+import Kontakt from "../components/Kontakt.astro";
+import { site } from "../config/site.config";
+import { faq } from "../config/faq";
+---
+
+<Base
+  title={`Pompy ciepła ${site.adres.miasto} — montaż i serwis | ${site.nazwa}`}
+  description={`Dobór, montaż i serwis pomp ciepła w ${site.adres.miasto === "Lublin" ? "Lublinie" : site.adres.miasto} i okolicach. Bezpłatna wizja lokalna i pomoc w formalnościach dotacyjnych.`}
+  faq={faq}
+>
+  <Hero />
+  <Uslugi />
+  <Proces />
+  <Opinie />
+  <Faq />
+  <Kontakt />
+</Base>

@@ -1,0 +1,23 @@
+---
+import { site } from "../config/site.config";
+const rok = new Date().getFullYear();
+---
+
+<footer class="bg-brand-900 text-brand-100">
+  <div class="container-x grid gap-8 py-12 text-[15px] sm:grid-cols-3">
+    <div>
+      <p class="text-lg font-extrabold text-white">{site.nazwa}</p>
+      <p class="mt-2">{site.slogan}</p>
+    </div>
+    <div>
+      <p class="font-semibold text-white">{site.nazwaPrawna}</p>
+      <p>{site.adres.ulica}, {site.adres.kod} {site.adres.miasto}</p>
+      <p>NIP: {site.nip} · REGON: {site.regon}</p>
+    </div>
+    <div class="sm:text-right">
+      <p><a class="underline underline-offset-2 hover:text-white" href="/polityka-prywatnosci/">Polityka prywatności</a></p>
+      <p class="mt-2">© {rok} {site.nazwa}</p>
+      <p class="mt-2 text-brand-100/70">Strona: <a class="underline underline-offset-2 hover:text-white" href={site.autor.github}>{site.autor.nazwa}</a></p>
+    </div>
+  </div>
+</footer>

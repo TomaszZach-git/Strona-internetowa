@@ -1,0 +1,110 @@
+---
+import "../styles/global.css";
+import { site } from "../config/site.config";
+import Naglowek from "../components/Naglowek.astro";
+import Stopka from "../components/Stopka.astro";
+import StickyCall from "../components/StickyCall.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  faq?: { q: string; a: string }[];
+}
+const { title, description, noindex = false, faq } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/og-default.png", Astro.site);
+
+const dayMap = site.godziny.map((g) => ({
+  "@type": "OpeningHoursSpecification",
+  dayOfWeek: g.dni,
+  opens: g.od,
+  closes: g.do,
+}));
+
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": site.typSchema,
+  name: site.nazwa,
+  description: site.opis,
+  url: Astro.site?.toString(),
+  telephone: site.telefon,
+  email: site.email,
+  image: ogImage.toString(),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.adres.ulica,
+    postalCode: site.adres.kod,
+    addressLocality: site.adres.miasto,
+    addressRegion: site.adres.wojewodztwo,
+    addressCountry: "PL",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
+  areaServed: site.obszarDzialania.map((m) => ({ "@type": "City", name: m })),
+  openingHoursSpecification: dayMap,
+};
+
+const faqSchema = faq?.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faq.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    }
+  : null;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#115a3b" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:site_name" content={site.nazwa} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  </head>
+  <body class="pb-20 md:pb-0">
+    <a href="#tresc" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:shadow-lg">
+      Przejdź do treści
+    </a>
+    {
+      site.demo && (
+        <div class="bg-ink text-center text-sm text-white/90">
+          <p class="container-x py-2">
+            Projekt demonstracyjny — firma „{site.nazwa}” jest fikcyjna. Autor:{" "}
+            <a class="font-semibold underline underline-offset-2" href={site.autor.github}>
+              {site.autor.nazwa}
+            </a>
+          </p>
+        </div>
+      )
+    }
+    <Naglowek />
+    <main id="tresc">
+      <slot />
+    </main>
+    <Stopka />
+    <StickyCall />
+  </body>
+</html>

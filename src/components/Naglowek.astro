@@ -1,0 +1,27 @@
+---
+import { site } from "../config/site.config";
+import Logo from "./Logo.astro";
+const linki = [
+  { href: "/#uslugi", label: "Usługi" },
+  { href: "/#proces", label: "Jak pracujemy" },
+  { href: "/#faq", label: "Pytania" },
+  { href: "/#kontakt", label: "Kontakt" },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-ink/5 bg-paper/90 backdrop-blur">
+  <div class="container-x flex h-16 items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-2 font-extrabold text-brand-700" aria-label={`${site.nazwa} — strona główna`}>
+      <Logo class="h-8 w-8" />
+      <span class="text-xl tracking-tight">{site.nazwa}</span>
+    </a>
+    <nav aria-label="Główna nawigacja" class="hidden md:block">
+      <ul class="flex items-center gap-7 text-[15px] font-semibold text-muted">
+        {linki.map((l) => <li><a class="hover:text-brand-700" href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+    <a href={`tel:${site.telefon}`} class="btn-primary hidden !py-2 text-[15px] sm:inline-flex">
+      Zadzwoń: {site.telefonWyswietlany}
+    </a>
+  </div>
+</header>

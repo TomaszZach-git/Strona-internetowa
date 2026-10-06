@@ -1,0 +1,52 @@
+---
+const uslugi = [
+  {
+    tytul: "Pompy ciepła powietrze–woda",
+    opis: "Dobór mocy na podstawie zapotrzebowania budynku, montaż jednostki zewnętrznej i hydrauliki, uruchomienie i szkolenie z obsługi.",
+    ikona: "M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z",
+  },
+  {
+    tytul: "Fotowoltaika z magazynem energii",
+    opis: "Instalacja PV połączona z pompą ciepła, żeby ogrzewanie w możliwie dużej części korzystało z własnego prądu.",
+    ikona: "M4 18h16M6 18l2-10h8l2 10M9 8l-1 10m7-10 1 10M7 13h10M12 3v2",
+  },
+  {
+    tytul: "Modernizacja kotłowni",
+    opis: "Wymiana starego kotła na pompę ciepła lub układ hybrydowy, z wykorzystaniem istniejących grzejników, gdy to możliwe.",
+    ikona: "M4 21V8l8-5 8 5v13M9 21v-6h6v6",
+  },
+  {
+    tytul: "Serwis i przeglądy",
+    opis: "Coroczne przeglądy wymagane do utrzymania gwarancji producenta, diagnostyka i naprawy urządzeń różnych marek.",
+    ikona: "M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z",
+  },
+  {
+    tytul: "Pomoc w formalnościach",
+    opis: "Przygotowanie dokumentów do wniosku o dofinansowanie i rozliczenia ulgi termomodernizacyjnej — mówimy, co trzeba, i w jakiej kolejności.",
+    ikona: "M8 4h8l4 4v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm8 0v4h4M10 13h6m-6 4h6",
+  },
+  {
+    tytul: "Audyt zużycia energii",
+    opis: "Analiza rachunków i budynku przed decyzją. Jeśli pompa ciepła się nie opłaci, usłyszysz to od nas wprost.",
+    ikona: "M4 20V10m6 10V4m6 16v-7m4 7H2",
+  },
+];
+---
+
+<section id="uslugi" class="scroll-mt-20 py-20 md:py-28">
+  <div class="container-x">
+    <p class="eyebrow">Usługi</p>
+    <h2 class="h2 mt-2 max-w-2xl">Wszystko, czego potrzebuje dom przechodzący na czyste ogrzewanie</h2>
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {uslugi.map((u) => (
+        <article class="group rounded-2xl border border-ink/8 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <div class="mb-5 grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={u.ikona} /></svg>
+          </div>
+          <h3 class="text-xl font-bold">{u.tytul}</h3>
+          <p class="mt-2 text-muted">{u.opis}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+@import "@fontsource-variable/manrope";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Paleta marki — zmieniana per klient */
+  --color-brand-50: #eef7f3;
+  --color-brand-100: #d5ece1;
+  --color-brand-500: #1f8a5b;
+  --color-brand-600: #17704a;
+  --color-brand-700: #115a3b;
+  --color-brand-900: #0b3424;
+  --color-accent-400: #f5a524;
+  --color-accent-500: #e08c0b;
+  --color-ink: #13201a;
+  --color-muted: #4a5a52;
+  --color-paper: #fbfaf6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  @media (min-width: 768px) {
+    body { font-size: 18px; }
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-accent-500);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}
+
+@utility container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition-colors;
+}
+@utility btn-primary { @apply btn bg-accent-400 text-ink hover:bg-accent-500; }
+@utility btn-ghost { @apply btn border border-current hover:bg-white/10; }
+@utility eyebrow { @apply text-sm font-bold uppercase tracking-wider text-brand-600; }
+@utility h2 { @apply text-3xl font-extrabold tracking-tight text-balance sm:text-4xl; }

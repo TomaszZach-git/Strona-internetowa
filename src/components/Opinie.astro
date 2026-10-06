@@ -1,0 +1,26 @@
+---
+import { site } from "../config/site.config";
+// Opinie pobierane wyłącznie z prawdziwego Profilu Firmy w Google.
+// W wersji demo sekcja pokazuje, gdzie się pojawią — bez wymyślonych recenzji.
+---
+
+<section class="py-20 md:py-28">
+  <div class="container-x">
+    <div class="rounded-3xl bg-ink px-6 py-12 text-white sm:px-12 md:flex md:items-center md:justify-between md:gap-10">
+      <div class="max-w-2xl">
+        <p class="text-sm font-bold uppercase tracking-wider text-accent-400">Opinie klientów</p>
+        <h2 class="mt-2 text-3xl font-extrabold tracking-tight">Tu trafiają opinie z Profilu Firmy w Google</h2>
+        <p class="mt-4 text-white/80">
+          Na stronie klienta wyświetlamy wyłącznie prawdziwe recenzje z Profilu Firmy w Google,
+          z linkiem do źródła.
+          {site.demo && " To strona demonstracyjna fikcyjnej firmy, więc celowo nie ma tu żadnych opinii."}
+        </p>
+      </div>
+      <div class="mt-8 flex shrink-0 items-center gap-1 text-accent-400 md:mt-0" aria-hidden="true">
+        {Array.from({ length: 5 }).map(() => (
+          <svg class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5Z" opacity=".35"/></svg>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
