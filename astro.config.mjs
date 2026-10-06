@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
 // Adres docelowy strony — podmień po podpięciu domeny klienta.
-const SITE_URL = "https://cieplomir-demo.vercel.app";
+const SITE_URL = "https://strona-internetowa-drab.vercel.app";
 
 export default defineConfig({
   site: SITE_URL,
