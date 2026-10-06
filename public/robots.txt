@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cieplomir-demo.vercel.app/sitemap-index.xml
+Sitemap: https://strona-internetowa-drab.vercel.app/sitemap-index.xml
